@@ -1197,37 +1197,6 @@ local Tab = Window:MakeTab({
 })
 
 Tab:AddButton({
-	Name = "自动刷钱(请先成为货车司机才能自动刷钱）",
-	Callback = function()
-	    _G.autoFarm = AM
-    if AM then
-        autoFarm()
-    end
-    game.RunService.Stepped:Connect(function()
-        local virtualUser = game:GetService('VirtualUser')
-        virtualUser:CaptureController()
-        function teleportTo(CFrame) 
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame
-        end
-        _G.autoFarm = true
-        function autoFarm()
-            while _G.autoFarm do
-                fireclickdetector(game:GetService("Workspace").DeliverySys.Misc["Package Pile"].ClickDetector)
-                task.wait(2.2)
-                for _,point in pairs(game:GetService("Workspace").DeliverySys.DeliveryPoints:GetChildren()) do
-                    if point.Locate.Locate.Enabled then
-                        teleportTo(point.CFrame)
-                    end
-                end
-                task.wait(0)
-            end
-        end
-    end)
-end})
-	end
-})
-
-Tab:AddButton({
 	Name = "河北唐县1",
 	Callback = function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Sw1ndlerScripts/RobloxScripts/main/Tang%20Country.lua"))()
@@ -2397,7 +2366,6 @@ Tab:AddButton({
 
 if string.find(v.Name,"Infector") then
 v:Destroy()
-end
 end
 	end
 })
